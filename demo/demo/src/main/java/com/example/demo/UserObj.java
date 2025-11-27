@@ -7,36 +7,58 @@ public class UserObj {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Column
-    private String name;
+    private String title;
 
     @Column
-    private int age;
+    private String author;
+
+    @Column
+    private int bookCopies;
+
+    @Column
+    private String imageUrl;
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public int getBookCopies() {
+        return bookCopies;
+    }
+
+    public void setBookCopies(int bookCopies) {
+        this.bookCopies = bookCopies;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @SpringBootApplication
 @RestController
@@ -18,39 +19,25 @@ public class Main {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/greet")
-    public String greet(){
-        return "Hello World!";
+    @PostMapping("/addBooks")
+    public @ResponseBody String addNewBooks (@RequestBody List<UserObj> books) {
+        //UserObj book = new UserObj();
+        //book.setTitle((String) books.get("title"));
+        //book.setAuthor((String) books.get("author"));
+        //book.setBookCopies((int) books.get("bookCopies"));
+        //book.setImageUrl((String) books.get("imageUrl"));
+        userRepository.saveAll(books);
+        return "test";
     }
 
-    @GetMapping("/getUsers")
-    public List<UserObj> getUsers(){
-        return (List<UserObj>) userRepository.findAll();
-    }
+    //@PostMapping("/add")
+    //public @ResponseBody String addNewUser (@RequestParam String name, int age) {
+    //    UserObj user = new UserObj();
+    //    user.setName(name);
+    //    user.setAge(age);
+    //    userRepository.save(user);
+    //    return name + " is saved";
+    //}
 
-    @PostMapping("/add")
-    public @ResponseBody String addNewUser (@RequestParam String name, int age) {
-        UserObj user = new UserObj();
-        user.setName(name);
-        user.setAge(age);
-        userRepository.save(user);
-        return name + " is saved";
-    }
-
-    @PutMapping("/update/{id}")
-    public String updateUser (@PathVariable int id, @RequestBody UserObj user) {
-        UserObj updatedUser = userRepository.findById(id).get();
-        updatedUser.setName(user.getName());
-        updatedUser.setAge(user.getAge());
-        userRepository.save(updatedUser);
-        return "User id: " + id + " updated";
-    }
-
-    @DeleteMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable int id){
-        UserObj deleteUser = userRepository.findById(id).get();
-        userRepository.delete(deleteUser);
-        return "User with id: " + id + " deleted.";
-    }
 
 }
