@@ -1,0 +1,20 @@
+<main class="app-container">
+  <div class="detail" *ngIf="boek">
+    <img src="{{ boek.afbeeldingURL }}" alt="{{ boek.titel }}" />
+    <div>
+      <h2>{{ boek.titel }}</h2>
+      <p class="muted">by {{ boek.auteur }}</p>
+      <p><strong>Available:</strong> {{ boek.aantalExemplaren }}</p>
+      <p class="muted"><small>ID: {{ boek.id }}</small></p>
+      <p style="margin-top:12px"><a class="back-link" routerLink="/">← Back to list</a></p>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div *ngIf="!boek">
+    <p style="text-align:center">Book not found.</p>
+    <p class="center"><a routerLink="/">Back to list</a></p>
+  </div>
+</main>

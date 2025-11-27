@@ -1,0 +1,44 @@
+<header class="app-header">
+    <h1>Boekenlijst</h1>
+    <p class="muted">Browse the catalogue and click any title for more details</p>
+    <div style="margin-top:12px; display:flex; gap:8px; justify-content:center;">
+        <button (click)="setView('table')" class="view-toggle" [class.active]="viewMode === 'table'">Table</button>
+        <button (click)="setView('gallery')" class="view-toggle" [class.active]="viewMode === 'gallery'">Gallery</button>
+    </div>
+</header>
+
+<main class="app-container">
+    <div class="view-panel" [class.visible]="viewMode === 'table'" [class.hidden]="viewMode !== 'table'">
+        <table aria-label="boekenlijst">
+            <thead>
+                <tr>
+                    <th style="width:72px">ID</th>
+                    <th>Title</th>
+                    <th style="width:220px">Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let boek of boekenlijst; trackBy: trackById">
+                    <td class="muted">{{ boek.id }}</td>
+                    <td><a class="boek-link" [routerLink]="['/boek', boek.id]">{{ boek.titel }}</a></td>
+                    <td class="muted">{{ boek.auteur }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="list-note">Tip: use your browser's back button or the link in the detail view to return.</p>
+    </div>
+
+    <div class="view-panel" [class.visible]="viewMode === 'gallery'" [class.hidden]="viewMode !== 'gallery'">
+        <div class="gallery-grid">
+            <a class="card" *ngFor="let boek of boekenlijst; trackBy: trackById" [routerLink]="['/boek', boek.id]">
+                <img src="{{ boek.afbeeldingURL }}" alt="{{ boek.titel }}" />
+                <div class="card-body">
+                    <div class="card-title">{{ boek.titel }}</div>
+                    <div class="muted">{{ boek.auteur }}</div>
+                    <div class="muted" style="margin-top:6px; font-size:13px">{{ boek.aantalExemplaren }} copies</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</main>

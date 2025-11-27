@@ -1,0 +1,60 @@
+/* Global app styles - colorful palette */
+:root{
+    --bg: #f0e6ff;
+    --surface: #ffffff;
+    --muted: #6b7280;
+    --primary: #0f172a;
+    --accent: #2563eb;
+    --accent-pink: #ec4899;
+    --accent-purple: #a855f7;
+    --accent-cyan: #06b6d4;
+    --accent-orange: #f97316;
+    --card-shadow: 0 10px 30px rgba(168,85,247,0.08);
+}
+
+html,body{ height:100%; }
+body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(135deg, #f0e6ff 0%, #fce7f3 50%, #cffafe 100%);
+    color: var(--primary);
+    -webkit-font-smoothing:antialiased;
+}
+
+/* Central container for pages */
+main.app-container{ max-width:1100px; margin:26px auto; padding:24px; background: rgba(255,255,255,0.5); border-radius:16px; box-shadow: 0 8px 32px rgba(99,102,241,0.1) }
+
+/* Header - colorful gradient */
+.site-header{
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 30%, #d946ef 60%, #f97316 100%);
+    border-bottom: none;
+    box-shadow: 0 4px 20px rgba(99,102,241,0.15);
+}
+.site-header .container{ max-width:1100px; margin:0 auto; padding:18px 22px; display:flex; align-items:center; justify-content:space-between }
+.brand h1{ margin:0; font-size:22px; color:#ffffff; letter-spacing:-0.4px; font-weight:700 }
+.brand .tagline{ display:block; margin-top:4px; color:rgba(255,255,255,0.9); font-size:12px }
+.site-nav .nav-link{ color:#ffffff; text-decoration:none; padding:8px 12px; border-radius:10px; transition: background .2s ease }
+.site-nav .nav-link:hover{ background: rgba(255,255,255,0.2) }
+
+.site-footer{ padding:18px 0 26px 0; text-align:center; font-size:13px; color:var(--muted) }
+
+/* Improve focus outlines for keyboard users */
+a:focus, button:focus{ outline:3px solid rgba(37,99,235,0.14); outline-offset:3px }
+
+/* Utilities */
+.center { text-align:center }
+.back-link{ color:var(--accent-purple); font-size:14px; font-weight:600 }
+.muted{ color:var(--muted) }
+.spacer{ height:12px }
+
+/* Small shadowed card wrapper for routed content */
+.app-card{
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  padding: 18px;
+}
+
+@media (max-width:700px){
+  .site-header .container, main.app-container{ padding-left:14px; padding-right:14px }
+}
